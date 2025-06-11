@@ -67,7 +67,7 @@ end
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Benix Hub",
+   Name = "Benix Hub - Free",
    Icon = 0, 
    LoadingTitle = "Loading Benix",
    LoadingSubtitle = "",
