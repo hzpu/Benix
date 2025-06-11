@@ -1,8 +1,12 @@
 local PN = game:GetService("Players").LocalPlayer.Name
+local player = game.Players.LocalPlayer
+local hrp = player.Character.HumanoidRootPart
 _G.autofarm = false
 _G.autorebirthvar = false
 _G.autofarmhoops = false
 _G.autofarmgemsvar = false
+_G.autoclaimgiftsvar = false
+_G.autospinwheelvar = false
 function autofarmgems()
     task.spawn(function()
         while _G.autofarmgemsvar do
@@ -37,7 +41,8 @@ end
 function autofarmorb()
     task.spawn(function()
         while _G.autofarm do
-            for i, v in pairs(workspace.orbFolder.City:GetChildren()) do
+            local orbpath = workspace.orbFolder.City
+            for i, v in pairs(orbpath:GetChildren()) do
                 if v:FindFirstChild("outerOrb") then
                     local hrp = workspace[PN]:FindFirstChild("HumanoidRootPart")
                     if hrp then
@@ -47,6 +52,33 @@ function autofarmorb()
                 end
             end
             task.wait()
+        end
+    end)
+end
+
+function autospinwheel()
+    task.spawn(function()
+        while _G.autospinwheelvar do
+task.wait(.3)
+local args = {
+	"openFortuneWheel",
+	game:GetService("ReplicatedStorage"):WaitForChild("fortuneWheelChances"):WaitForChild("Fortune Wheel")
+}
+game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("openFortuneWheelRemote"):InvokeServer(unpack(args))
+    end
+    end)
+end
+
+function autoclaimgifts()
+    local rEvents = game:GetService("ReplicatedStorage"):WaitForChild("rEvents")
+    local giftclaimremote = rEvents:WaitForChild("freeGiftClaimRemote")
+    task.spawn(function()
+        while _G.autoclaimgiftsvar do
+            for giftnum = 8, 1, -1 do
+                local args = {"claimGift", giftnum}
+                giftclaimremote:InvokeServer(unpack(args))
+            end
+            task.wait(1)
         end
     end)
 end
@@ -91,6 +123,7 @@ local Window = Rayfield:CreateWindow({
    }
 })
 local Tab = Window:CreateTab("Main")
+local Races = Window:CreateTab("Races")
 local Credits = Window:CreateTab("Credits")
 
 local Toggle = Tab:CreateToggle({
@@ -130,6 +163,47 @@ local Toggle2 = Tab:CreateToggle({
    Callback = function(Value)
    _G.autorebirthvar = Value
    autorebirth()
+   end,
+})
+
+local Toggle5 = Tab:CreateToggle({
+   Name = "auto claim gifts",
+   CurrentValue = false,
+   Flag = "autogiftsflag",
+   Callback = function(Value)
+   _G.autoclaimgiftsvar = Value
+   autoclaimgifts()
+   end,
+})
+
+local Toggle6 = Tab:CreateToggle({
+   Name = "auto spin fortune",
+   CurrentValue = false,
+   Flag = "autospinthing",
+   Callback = function(Value)
+   _G.autospinwheelvar = Value
+   autospinwheel()
+   end,
+})
+
+local Button = Races:CreateButton({
+   Name = "Teleport to desert finish",
+   Callback = function()
+   hrp.CFrame = CFrame.new(48.3109131, 36.3147125, -8680.45312, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+   end,
+})
+
+local Button2 = Races:CreateButton({
+   Name = "Teleport to Grassland finish",
+   Callback = function()
+   hrp.CFrame = CFrame.new(1686.07495, 36.3147125, -5946.63428, -0.984812617, 0, 0.173621148, 0, 1, 0, -0.173621148, 0, -0.984812617)
+   end,
+})
+
+local Button3 = Races:CreateButton({
+   Name = "Teleport to Magma finish",
+   Callback = function()
+   hrp.CFrame = CFrame.new(1001.33118, 36.3147125, -10986.2178, -0.996191859, 0, -0.0871884301, 0, 1, 0, 0.0871884301, 0, -0.996191859)
    end,
 })
 
