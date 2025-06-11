@@ -1,15 +1,4 @@
---[[
-    Build A Boat For Treasure Autofarm Script
-    UI: Obsidian
-    Features:
-    - Run Once Button
-    - Loop Toggle with Delay Slider
-    - Stage Teleport Dropdown
-    - Anti-Cheat Kill Prevention
-    - Smart Retry Logic
-    - Black Screen Mode
-    - Credits Tab
-]]
+
 
 local TweenService = game:GetService("TweenService")
 local Players = game:GetService("Players")
@@ -18,7 +7,7 @@ local character = player.Character or player.CharacterAdded:Wait()
 local hrp = character:WaitForChild("HumanoidRootPart")
 local humanoid = character:WaitForChild("Humanoid")
 
--- Load Obsidian UI
+
 local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
 local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
 local ThemeManager = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))()
@@ -40,7 +29,7 @@ local Tabs = {
 
 local Toggles, Options = Library.Toggles, Library.Options
 
---[[ FARM FUNCTION LOGIC ]]
+
 local stageCFrames = {
     CFrame.new(-51.5656433, 65.0000458, 1369.09009),
     CFrame.new(-51.5656433, 65.0000458, 2139.09009),
@@ -77,7 +66,7 @@ local function runFarm()
     end
 end
 
---[[ MAIN TAB ELEMENTS ]]
+
 local Group = Tabs.Main:AddLeftGroupbox("Farm")
 
 Group:AddButton({
@@ -128,7 +117,7 @@ Options.StageTP:OnChanged(function(val)
     end
 end)
 
---[[ SETTINGS TAB: BLACK SCREEN MODE ]]
+
 Tabs.Settings:AddLeftGroupbox("Performance"):AddToggle("BlackScreen", {
     Text = "Black Screen Mode",
     Default = false,
@@ -155,7 +144,7 @@ Toggles.BlackScreen:OnChanged(function()
     end
 end)
 
---[[ CREDITS TAB ]]
+
 local CreditLeft = Tabs.Credits:AddLeftGroupbox("Credits Info")
 
 CreditLeft:AddLabel("BENIX AKAA is the dev")
