@@ -1,0 +1,136 @@
+local PN = game:GetService("Players").LocalPlayer.Name
+_G.autofarm = false
+_G.autorebirthvar = false
+_G.autofarmhoops = false
+_G.autofarmgemsvar = false
+function autofarmgems()
+    task.spawn(function()
+        while _G.autofarmgemsvar do
+            for i,v in pairs(workspace.orbFolder.City:GetChildren()) do
+                local hrp = game.Players.LocalPlayer.Character.HumanoidRootPart
+                firetouchinterest(hrp, v.outerGem, 1)
+                task.wait()
+                firetouchinterest(hrp, v.outerGem, 0)
+            end
+        end
+    end)
+end
+
+function autofarmhoops()
+    task.spawn(function()
+        while _G.autofarmhoops do
+            local hoops = workspace:FindFirstChild("Hoops")
+            if hoops then
+                for i, v in pairs(hoops:GetChildren()) do
+                    local hrp = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                    if hrp then
+                        firetouchinterest(hrp, v, 1)
+                        task.wait(0.1)
+                        firetouchinterest(hrp, v, 0)
+                    end
+                end
+            end
+            task.wait(0.1)
+        end
+    end)
+end
+function autofarmorb()
+    task.spawn(function()
+        while _G.autofarm do
+            for i, v in pairs(workspace.orbFolder.City:GetChildren()) do
+                if v:FindFirstChild("outerOrb") then
+                    local hrp = workspace[PN]:FindFirstChild("HumanoidRootPart")
+                    if hrp then
+                        firetouchinterest(hrp, v.outerOrb, 0)
+                        firetouchinterest(hrp, v.outerOrb, 1)
+                    end
+                end
+            end
+            task.wait()
+        end
+    end)
+end
+
+function autorebirth()
+    task.spawn(function()
+        while _G.autorebirthvar do
+            task.wait(.3)
+            local args = {
+                "rebirthRequest"
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("rebirthEvent"):FireServer(unpack(args))
+        end
+    end)
+end
+
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Benix Hub",
+   Icon = 0, 
+   LoadingTitle = "Loading Benix",
+   LoadingSubtitle = "",
+   Theme = "AmberGlow",
+
+   ToggleUIKeybind = "K",
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false,
+
+
+   KeySystem = true,
+   KeySettings = {
+      Title = "Benix Key System",
+      Subtitle = "",
+      Note = "Join the discord server (https://discord.gg/bCgyguhDrm)",
+      FileName = "BenixKey",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"Benix On Top"}
+   }
+})
+local Tab = Window:CreateTab("Main")
+local Credits = Window:CreateTab("Credits")
+
+local Toggle = Tab:CreateToggle({
+   Name = "auto farm orbs",
+   CurrentValue = false,
+   Flag = "autofarmorbsflag",
+   Callback = function(Value)
+   _G.autofarm = Value
+   autofarmorb()
+   end,
+})
+
+local Toggle3 = Tab:CreateToggle({
+   Name = "auto farm hoops",
+   CurrentValue = false,
+   Flag = "autofarmhoopsflag",
+   Callback = function(Value)
+   _G.autofarmhoops = Value
+   autofarmhoops()
+   end,
+})
+
+local Toggle4 = Tab:CreateToggle({
+   Name = "auto farm gems",
+   CurrentValue = false,
+   Flag = "autofarmgemsflag",
+   Callback = function(Value)
+   _G.autofarmgemsvar = Value
+   autofarmgems()
+   end,
+})
+
+local Toggle2 = Tab:CreateToggle({
+   Name = "auto rebirth",
+   CurrentValue = false,
+   Flag = "autorebirthflag",
+   Callback = function(Value)
+   _G.autorebirthvar = Value
+   autorebirth()
+   end,
+})
+
+local Paragraph = Credits:CreateParagraph({Title = "Developer", Content = "hzpu"})
