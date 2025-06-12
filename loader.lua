@@ -22,3 +22,8 @@ end
 if game.PlaceId == 5044920251 then
   loadstring(game:HttpGet("https://pastebin.com/raw/Sq9sWsNY"))()
 end
+
+-- babft
+if game.PlaceId == 537413528 then
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/hzpu/Benix/refs/heads/main/babft.lua",true))()
+end
