@@ -27,3 +27,8 @@ end
 if game.PlaceId == 537413528 then
   loadstring(game:HttpGet("https://raw.githubusercontent.com/hzpu/Benix/refs/heads/main/babft.lua",true))()
 end
+
+-- blade ball
+if game.PlaceId == 13772394625 then
+  loadstring(game:HttpGet("https://pastebin.com/raw/dXUfp8uX"))()
+end
