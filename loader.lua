@@ -30,5 +30,5 @@ end
 
 -- blade ball
 if game.PlaceId == 13772394625 then
-  loadstring(game:HttpGet("https://gist.githubusercontent.com/dez123-w/01e81f225b48dfc7c0d15c87f0cbcdac/raw/428fc2c404096b0293a31658bdf0aa4042c30d62/gistfile1.txt",true))()
+  loadstring(game:HttpGet("https://pastebin.com/raw/dXUfp8uX"))()
 end
