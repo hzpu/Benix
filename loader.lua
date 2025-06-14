@@ -35,6 +35,6 @@ end
 
 -- ninja legends
 if game.PlaceId == 3956818381 then
-  loadstring(game:HttpGet("https://github.com/hzpu/Benix/blob/main/nl",true))()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/hzpu/Benix/refs/heads/main/nl",true))()
 end
   
