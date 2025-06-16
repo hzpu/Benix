@@ -20,7 +20,7 @@ end
 
 -- Wall Hop Practice
 if game.PlaceId == 5044920251 then
-  loadstring(game:HttpGet("https://pastebin.com/raw/Sq9sWsNY"))()
+  loadstring(game:HttpGet("https://pastebin.com/raw/JiagjA2e"))()
 end
 
 -- babft
