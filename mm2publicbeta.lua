@@ -4,7 +4,7 @@ _G.delaytonextcoin = 0.2
 _G.snapDistance = 4
 _G.serverhop = true
 _G.maxdis = 100
-
+_G.disable3drendering = true
 local PN = game:GetService("Players").LocalPlayer.Name
 local Players = game:GetService("Players")
 local playerCount = #Players:GetPlayers()
@@ -38,6 +38,10 @@ game:GetService("RunService").Heartbeat:Connect(function()
     updatehrp()
 end)
 
+
+if _G.disable3drendering then
+    game.RunService:Set3dRenderingEnabled(false)
+end
 
 
 local function serverHop()
