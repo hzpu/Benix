@@ -152,3 +152,5 @@ if _G.coinfarmtoggle then
         end
     end)
 end
+
+print("benix is loaded <3 enjoy!")
