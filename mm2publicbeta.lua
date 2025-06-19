@@ -1,12 +1,12 @@
-_G.coinfarmtoggle = true
+_G.coinfarmtoggle = false
 _G.tweenspeed = 25
 _G.delaytonextcoin = 0.2
 _G.snapDistance = 4
-_G.serverhop = true
+_G.serverhop = false
 _G.maxdis = 100
-_G.disable3drendering = true
-_G.fpslimit = 20 
-_G.antiafk = true
+_G.disable3drendering = false
+_G.fpslimit = nil
+_G.antiafk = false
 local PN = game:GetService("Players").LocalPlayer.Name
 local Players = game:GetService("Players")
 local playerCount = #Players:GetPlayers()
