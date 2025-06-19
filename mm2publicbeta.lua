@@ -1,4 +1,3 @@
-
 _G.coinfarmtoggle = true
 _G.tweenspeed = 25
 _G.delaytonextcoin = 0.2
@@ -80,7 +79,6 @@ local function serverHop()
     end
 end
 
-if _G.coinfarmtoggle then
     task.spawn(function()
         while _G.coinfarmtoggle do
             for _, mapname in ipairs(mapnames) do
@@ -143,6 +141,7 @@ if _G.coinfarmtoggle then
                         if _G.serverhop then
                             if #game.Players:GetPlayers() <= 2 then
                                 serverHop()
+                            end
                         end
                     end
                     end
@@ -151,6 +150,5 @@ if _G.coinfarmtoggle then
             end
         end
     end)
-end
 
 print("benix is loaded <3 enjoy!")
