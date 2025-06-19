@@ -5,6 +5,8 @@ _G.snapDistance = 4
 _G.serverhop = true
 _G.maxdis = 100
 _G.disable3drendering = true
+_G.fpslimit = 20 
+_G.antiafk = true
 local PN = game:GetService("Players").LocalPlayer.Name
 local Players = game:GetService("Players")
 local playerCount = #Players:GetPlayers()
@@ -38,6 +40,15 @@ game:GetService("RunService").Heartbeat:Connect(function()
     updatehrp()
 end)
 
+if _G.antiafk then
+    game:GetService("Players").LocalPlayer.Idled:Connect(function()
+        return nil
+    end)
+end
+
+if _G.fpslimit then
+    setfpscap(_G.fpslimit)
+end
 
 if _G.disable3drendering then
     game:GetService("RunService"):Set3dRenderingEnabled(false)
