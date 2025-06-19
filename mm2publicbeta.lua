@@ -40,7 +40,7 @@ end)
 
 
 if _G.disable3drendering then
-    game.RunService:Set3dRenderingEnabled(false)
+    game:GetService("RunService"):Set3dRenderingEnabled(false)
 end
 
 
