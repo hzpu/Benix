@@ -20,7 +20,6 @@ local HttpService = game:GetService("HttpService")
 local TeleportService = game:GetService("TeleportService")
 local placeId = game.PlaceId
 local player = Players.LocalPlayer
-local vu = game:GetService("VirtualUser")
 local Humanoid = character:FindFirstChildOfClass("Humanoid")
 local humanoid = character:FindFirstChildOfClass("Humanoid")
 local mapnames = {"IceCastle","SkiLodge","Station","LogCabin","Bank2","BioLab","House2","Factory","Hospital3","Hotel","Mansion2","MilBase","Office3","PoliceStation","Workplace","ResearchFacility","ChristmasItaly"}
@@ -41,12 +40,14 @@ game:GetService("RunService").Heartbeat:Connect(function()
 end)
 
 if _G.antiafk then
+    local vu = game:GetService("VirtualUser")
     game:GetService("Players").LocalPlayer.Idled:Connect(function()
         vu:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
         task.wait(1)
         vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
     end)
 end
+
 
 if _G.fpslimit then
     setfpscap(_G.fpslimit)
