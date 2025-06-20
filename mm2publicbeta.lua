@@ -1,6 +1,6 @@
 print(_G.coinfarmtoggle)
 print(_G.tweenspeed)
-print(delaytonextcoin)
+print(_G.delaytonextcoin)
 print(_G.snapDistance)
 print(_G.serverhop)
 print(_G.maxdis)
